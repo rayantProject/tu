@@ -1,0 +1,49 @@
+Identifier la structure des fichiers sur git HUB
+
+Les trois principaux types d'objets sont :
+
+    le "tree" ou l'arbre Git qui est une forme de répertoire. Il va référencer une liste de trees et de blobs (sous-répertoires et fichiers) ;
+
+    le "commit" qui va pointer vers un arbre spécifique et le marquer, afin de représenter son état à un instant donné ;
+
+    Le "blob" qui représente en général un fichier (Binary Large Object).
+
+![Git n'utilise donc pas les noms des fichiers et des répertoires pour classer et stocker vos données, mais il utilise leur empreinte ou identifiant SHA-1 !]
+
+
+Représentation cryptographique d'un commit
+Toutes les informations nécessaires pour décrire l’historique d’un projet sont stockées dans des fichiers référencés par un identifiant de 40 caractères qui ressemble à quelque chose comme ça :
+
+[8gh96c4636981e4759825791c8ea3bcf5f2278t9]
+
+Pour chacun des objets dans Git, vous trouverez cette chaîne de 40 caractères que nous appelons le hash SHA-1. 
+
+___________________________________________________________________________________________________________
+
+La fusion sous Git :
+
+///////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+$git fetch 
+
+Extrait les commits les plus recents d'une branche(exemple : main) et les clones sur notre ordinateur sans pour autant etre commiter sur notre depots local
+
+il faut ensuite utiliser `git merge`
+
+//////////////////////////////////////////////////////
+
+$git merge
+
+
+Un  `git merge`  ne devrait être utilisé que pour la récupération fonctionnelle, intégrale et finale d’une branche dans une autre, afin de préserver un graphe d’historique sémantiquement cohérent et utile, lequel représente une véritable valeur ajoutée. 
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+___________________________________________________________________________________________________________
+
+@[Git rebase]
+
+Git rebase a le même objectif que Git merge. Ces deux commandes permettent de transférer les changements d'une branche à une autre.  Seule la manière de procéder va différer. Le rebase dispose de puissantes fonctionnalités de réécriture de l'historique. Il existe deux types de rebase : le rebase manuel et le rebase interactif
+
+le rebase consiste à changer la base de votre branche d'un commit vers un autre, donnant l'illusion que vous avez créé votre branche à partir d'un commit différent. Git va prendre vos modifications d'une branche et les transposer sur une autre branche.
+
+

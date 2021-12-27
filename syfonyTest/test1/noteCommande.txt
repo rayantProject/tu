@@ -1,0 +1,16 @@
+on peut faire apparaitre des option de commandes avec
+'>>php bin/console'
+
+en utilisant une commande suivie de -h ou help on peut avoir plus de infos sur celle-ci 
+'>>php bin/console debug:autowiring -h'
+
+les commandes 'debug:' servent en générale a donner des infos comme 'debug:container' qui 
+donne la liste des sérvices de un namespace
+
+les 'make:'servent à crée des trucs 
+
+les 'doctrine:' BBD
+
+
+NOTE:::COMMANDE PRATIQUE
+'>>php bin/console debug:autowiring' permet de avoir une liste des services existants 

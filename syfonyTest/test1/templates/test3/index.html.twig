@@ -1,0 +1,35 @@
+
+{# permet de reutiliser les structures du twig base.html.twig  #}
+{% extends 'base.html.twig' %}
+
+{% block title "titrePage"%}
+{# on peut aussi {% block title %}titrePage{% endblock %} #}
+
+
+{# appeller block body du base.html... fonctionne comme une surchage #}
+{# cest comme ci on avait tout du base.html mais on le modifie #}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {# pour utiliser twig #}
+    {# {{...}} rendre(variable, expression) comme celle du controller #}
+    {# cette expression pour commenter#}
+    {# {%...%} execuer une declaration ex un if  #}
+    {# {...|...} le pipe pour modifier mise en forme#}
+
+    {# grace a un tableau associatif on peut recupérer des variables dans le controlleur #}
+
+    <h1>le {{ controller_name }}! ✅</h1>
+
+    Creer des liens ce fait avec le path() et prend en parametre le name
+    <ul>
+        <li><a href="{{path('testController1')}}">lien vers test1</a></li>
+        <li><a href="{{path('testReponse',{'nmbre': 30})}}">lien vers test avec param</a></li>
+    </ul>
+</div>
+{% endblock %}

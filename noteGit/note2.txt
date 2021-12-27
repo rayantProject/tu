@@ -1,0 +1,147 @@
+Git gère les versions de vos travaux locaux à travers 3 zones locales majeures :
+
+le répertoire de travail (working directory/WD) ;
+        ||
+    `Git Add`
+        ||
+        \/
+l’index, ou stage (nous préférerons le second terme) ;
+        ||
+    `Git Commit`
+        ||
+        \/
+le dépôt local (Git directory/repository).
+    ||          /\
+`Git push`      ||
+    ||      `Git Pull`
+    \/          ||
+        GIT HUB
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+L'index, ou stage, désigne tous les fichiers modifiés que vous souhaitez voir apparaître dans votre prochain commit. C'est avec la fonction  `git add`  que l on ajoute un fichier au stage. 
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+La commande :
+
+$git status
+
+permet d'avoir des infos sur les branches comme les fichiers modifier par exemple
+
+
+La commande :
+
+$ git log 
+
+
+git log  va vous lister par ordre chronologique inversé tous vos commits réalisés.
+
+
+La commande :
+
+$ git pull 
+
+va permettre de retelecharger directement dans 
+
+//////////////////////////////////////////////////////////////////////////
+
+Supprimer une branche qu'on a creer :
+
+$git branch -d brancheTest
+
+Pour forcer une branche a se supprimer dans le cas ou on la modifiés par exemple il faut :
+
+$git branch -D brancheTest
+
+
+______________________________________________________________________________________________________
+
+Si on a fait une modif sur une branche par erreur
+
+Creer des Remises :
+$git stash
+
+Une remise c'est sauvegarder tout nos modif de coté en attentes dans un coin pour avoir une branche propre
+ca va netoyer la branche sur laquelle c'est effectué et on pourra ensuite voir la copié sur une nouvelle branche
+
+(Apres avoir creer et basculer sur la nouvelle branche)
+afin de récupérer nos modifications sur notre nouvelle branche.
+
+$git stash apply
+
+Cette commande va appliquer la dernière remise qui a été faite.
+
+
+
+
+Si pour une raison ou une autre, vous avez créé plusieurs remises,
+ et que la dernière n'est pas celle que vous souhaitiez appliquer,
+ il est possible d'appliquer une autre remise.
+
+$git stash list
+
+Cette commande va nous retourner un "tableau" des remises avec des identifiants du style :
+
+$git stash apply stash{numero de la remise}
+
+exemple:
+$git stash apply stash@{0}
+
+
+
+______________________________________________________________________________________________________
+
+Maintenant, admettons que vous ayez réalisé vos modifications et qu'en plus vous ayez fait le commit. Le cas est plus complexe, puisque vous avez enregistré vos modifications sur la branche master, alors que vous ne deviez pas.
+
+Nous allons devoir aller analyser vos derniers commits avec la fonction  
+git log, afin de pouvoir récupérer l'identifiant du commit que l'on appelle couramment le `hash`.
+
+Maintenant que vous disposez de votre identifiant, gardez-le bien de côté. Vérifiez bien que vous êtes sur votre branche master et réalisez la commande suivante :
+
+$git reset --hard HEAD^
+
+Cette ligne de commande va permettre de supprimer de la branche master votre dernier commit.  `Le Head^`indique que c'est bien le dernier commit que nous voulons supprimer.
+
+
+Nous allons maintenant créer notre nouvelle branche.
+
+$git branch brancheCommit
+
+Nous allons basculer sur cette branche.
+
+$git checkout brancheCommit
+
+Maintenant que nous sommes sur la bonne branche, nous allons de nouveau faire un  
+
+`git reset`
+
+
+mais celui-ci va permettre d'appliquer ce commit sur notre nouvelle branche ! 
+Il n'est pas nécessaire d'écrire 
+l'identifiant en entier. Seuls les 8 premiers caractères sont nécessaires. 
+
+$git reset --hard ca83a6df 
+(ca83a6df c'est l'identifiant ou hash du commit)
+
+
+______________________________________________________________________________________________________
+La fonction  "git --amend" permet de modifier en général un commit
+
+
+modifier le msg d'un commit
+
+$git commit --amend -m "Votre nouveau message de commit"
+
+Imaginons que vous ayez fait votre commit mais que vous réalisiez que vous avez oublié un fichier
+
+Nous allons dans un premier temps ajouter notre fichier, et dans un deuxième temps réaliser le  `git --amend.`
+
+$git add FichierOublie.txt
+$git commit --amend --no-edit
+
+Votre fichier a été ajouté à votre commit et grâce à la commande `--no-edit` que nous avons ajoutée, nous n'avons pas modifié le message du commit.
+
+
+
+

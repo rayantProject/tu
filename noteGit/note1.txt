@@ -1,0 +1,107 @@
+Git service de depot
+github herbergement de depot
+
+__________________________________________________________________________________________________________
+
+initialiser git commande 
+
+$git config --global user.name "nom prenom"
+$git config --global user.email rayan.traore@gmail.com
+
+!(grace a --global on le fera que une fois)
+!(on enleve le '--global')
+verifier les config avec : git config --list
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+AJOUTER DES COULEURS AUX commande git:
+
+$ git config --global color.diff auto
+$ git config --global color.status auto
+$ git config --global color.branch auto
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Par défaut Git utilisera Vim comme éditeur et Vimdiff comme outil de merge
+les modifier en utilisant :
+
+$ git config --global core.editor notepad++
+$ git config --global merge.tool vimdiff
+
+!(on peut configurer vs code dans le core editor et le merge)
+(pour ce faire :https://www.it-swarm-fr.com/fr/git/comment-utiliser-le-code-visual-studio-comme-editeur-par-defaut-pour-git-mergetool/831751305/)
+
+
+__________________________________________________________________________________________________________
+
+
+
+Comment creer un `dépot local` pour acceuillir un nouveau projet on a 2 options :
+
++creer un dépot local vide pour acceuillir un nouveau projet
+
+    -dans l'arborescence du dossier taper la commande
+    $git init
+
+    -on peut ensuite relier celui-ci a un dépots distant:
+    $git remote add notreNom URL
+    exemple:
+    $git remote add RayanT https://github.com/rayantProject/courGit.git
+    !(je me suis un peu perdu cette commande relie notre dépots local et distant)
+
++cloner un dépot distant c-a-d emmener celui-ci en local
+
+    `-d'abors Accédez à un dépôt distant :
+        récuperer le lien sur github avc le boutton `code`
+        $git remote add notreNom URL
+        exemple:
+        $git remote add RayanT https://github.com/rayantProject/courGit.git
+        !(je me suis un peu perdu cette commande relie notre dépots local et distant)`
+        
+    -Clonez le dépôt en local :
+        Maintenant que notre dépôt local pointe sur le dépôt distant, nous allons cloner son contenu et le dupliquer en local. Afin de réaliser le clonage, nous allons utiliser la commande :
+        $git clone https:https://github.com/rayantProject/courGit.git
+        on va recevoir copie les fichiers dans le dossier pointé
+__________________________________________________________________________________________________________
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+!($pwd est une commande pour voir l'url d'un fichier au cmd)
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+__________________________________________________________________________________________________________
+
+Le principal atout de Git est son système de branches. C’est sur ces branches que repose toute la magie de GIT ! Les différentes branches correspondent à des copies de votre code principal à un instant T, où vous pourrez tester toutes vos idées les plus folles sans que cela impacte votre code principal.
+
+`GIT` va créer une branche virtuelle, mémoriser tous vos changements, et seulement quand vous le souhaitez, les ajouter à votre application principale. Il va vérifier s'il n’y a pas de conflits avec d’autres fusions, et le tour est joué !
+
+Pour connaître les branches présentent dans notre projet, il faut taper la ligne de commande :
+$git branch
+
+La branche principal est `master` ou `main`
+
+!(il faut créer une branche si votre modification va être longue, qu’elle peut avoir des impacts, qu’elle n’est pas simple ou que vous ne voyez pas tout de suite comment faire la modification.)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+Pour ajouter une branche il faut :
+
+$git branch NouvelleBranche
+
+Vous pouvez maintenant voir votre branche `master`(ou main) et votre nouvelle branche. Comme vous pouvez le voir, la petite étoile est toujours sur la branche `master`(ou main). Nous avons créé la nouvelle branche mais nous n’avons pas encore basculé sur celle-ci. Pour basculer de branche, nous allons utiliser :
+
+$git checkout NouvelleBranche
+
+l'étoile va passé sur la Nouvelle Branche
+
+__________________________________________________________________________________________________________
+
+Vous avez réalisé des évolutions sur la branche Cagnotte et il va falloir maintenant demander à Git de les enregistrer.
+
+!(Un commit est tout simplement un enregistrement de votre travail à un instant T sur la branche courante où vous êtes. )
+
+Pour cela : 
+
+$git commit -m “texte explicant les modifs apporté par le commit”  
+
+
+

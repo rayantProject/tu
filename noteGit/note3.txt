@@ -1,0 +1,104 @@
+vous avez pushé des fichiers erronés. Le problème, 
+c'est que maintenant ce n'est plus que sur votre dépôt local, 
+mais à disposition de tout le monde. La première chose à faire est de prévenir vos collaborateurs. 
+Nous avons tout de même la solution à votre problème.
+
+
+
+Il est possible d'annuler son commit public avec la commande Git revert. 
+L'opération Revert annule un commit en créant un nouveau commit. 
+C'est une méthode sûre pour annuler des changements, 
+car elle ne risque pas de réécrire l'historique du commit.
+
+$git revert HEAD^
+
+______________________________________________________________________________________________________
+
+Git base toute sa gestion d’authentification sur le mécanisme des clés SSH. Ce système est d’ailleurs immensément utile de façon générale sous Linux, Unix et OSX, dès qu’il s’agit de s’authentifier sur une machine tierce.
+
+Nous allons maintenant générer notre duo de clés SSH :
+
+Dans Git Bash, exécutez la commande :
+
+$ssh-keygen -t rsa -b 4096 -C "johndoe@example.com"
+
+
+Vous pouvez soit appuyer sur Entrée, soit indiquer un nom de fichier. Un mot de passe vous est ensuite demandé.
+
+Félicitations ! Vous avez obtenu votre clé SSH !
+
+Pour la trouver, il suffit d'aller à l'
+adresse : C:\Users\VotreNomD\Utilisateur\.ssh\
+
+ et d'afficher les dossiers masqués.
+
+ Dans ce dossier, vous avez donc deux fichiers, votre clé publique et votre clé privée.
+
+ La clé id_rsa.txt est votre clé privée alors que la clé id_rsa.pub est votre clé publique. 
+ 
+ Vous pouvez copier votre clé en l'ouvrant dans un bloc-notes.
+
+ Ensuite on peut l'ajouter a github 
+
+______________________________________________________________________________________________________
+
+Les trois types de réinitialisation de Git `git reset`
+
+la commande  git reset  est un outil complexe et polyvalent pour annuler les changements. Elle peut être appelée de trois façons différentes, qui correspondent aux arguments de ligne de commande `--soft` ,`--mixed` et  `--hard`.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+$git reset notreCommitCible  --hard
+
+Cette commande va permettre de revenir à n'importe quel commit mais en oubliant absolument tout ce qu'il s'est passé après
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+$git push -f[force]
+
+pour forcer un push 
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Le  `git reset --mixed` va permettre de revenir juste après votre dernier commit ou le commit spécifié, sans supprimer vos modifications en cours. Il va par contre créer un HEAD détaché. Il permet aussi, dans le cas de fichiers indexés mais pas encore commités, de désindexer les fichiers.
+$git reset HEAD~
+
+Si rien n'est spécifié après  
+$git reset, 
+par défaut il exécutera un  
+$git reset --mixed HEAD~
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Nous avons enfin le  `git reset --Soft`. Le git reset `--Soft` permet juste de se placer sur un commit spécifique afin de voir le code à un instant donné ou créer une branche partant d'un ancien commit. Il ne supprime aucun fichier, aucun commit, et ne crée pas de HEAD détaché.
+
+/////////////////////////////////////////////////////////////
+
+Le HEAD, si vous n'êtes pas sûr d'avoir bien compris , est un pointeur, une référence sur notre position actuelle dans notre répertoire de travail Git. C’est un peu comme notre ombre : elle nous suit où qu’on aille ! Par défaut, HEAD pointe sur la branche courante, master, et peut être déplacé vers une autre branche ou un autre commit.
+-------------------------------------------------------------
+
+Vous pouvez considérer le HEAD comme "la branche actuelle". Lorsque vous changez de branche avec git checkout, la révision HEAD change pour indiquer le bout de la nouvelle branche.
+
+/////////////////////////////////////////////////////////////
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+______________________________________________________________________________________________________
+
+$git revert
+
+La différence entre Revert et Reset est que Reset va revenir à l'état précédent sans créer un nouveau commit, alors que Revert va créer un nouveau commit.
+
+////////////////////////////////////////////////////////////////////////////
+
+Elle va réaliser une sorte de Undo, mais en faisant un deuxième commit. Elle ne va pas revenir en arrière et supprimer votre commit, mais va inverser vos actions dans le commit et réaliser un second commit. Au lieu de supprimer le commit de l'historique du projet, elle détermine comment annuler les changements introduits par le commit et ajoute un nouveau commit avec le contenu ainsi obtenu.  Vous allez donc revenir à l'état précédent mais avec un nouveau commit.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+$git revert HEAD
+
+
+Une fois, votre commit "annulé", vous allez pouvoir enlever votre fichier, et réaliser de nouveau votre commit
+
+
+

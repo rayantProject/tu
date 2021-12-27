@@ -1,0 +1,52 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# grace a {param} on peut utiliser une variable dans une url
+# grace a defaut on peut donner des valeur par defaut
+# requirements permet definie une expression reguliere pour chaque paramettre
+
+# on peut aussi ajouter les expressions regulieres directement dans le {param} :...{param<\d+>?0}
+
+
+testParam:
+  path: /testParam/{param}
+  controller: App\Controller\TestController::testParam
+  defaults:
+      param: 0
+  requirements:
+      param: \d+
+  
+
+
+# on peut ajouter des contraine directement a la route avec methods: qui prend en param un tab avc les methodes
+#accepté
+#cette methode specifie que le lien n'est accesible quand post
+testContrainte:
+  path: /testContrainte
+  controller: App\Controller\TestController::testContrainte
+  methods: [post]
+  
+#grace a host on peut determiner le nom de domaine on peut meme definir un nom de subdommaine par exemple
+#...
+#host: {subdomaine}.monsite.com
+#...
+
+
+testContrainte2:
+  path: /testContrainte2
+  controller: App\Controller\TestController::testContrainte2
+  host: localhost
+
+
+#schemes permet de dire que ca va fonctionner en http ou https...
+
+
+testContrainte3:
+  path: /testContrainte3
+  controller: App\Controller\TestController::testContrainte3
+  methods: [post,get]
+  schemes: [https]
+
+
+#on peut aussi generer des routes depuis un autre fichier yaml en le creant dans le dossier routes

@@ -1,0 +1,55 @@
+Les logs :
+
+______________________________________________________________________________________________________
+
+$git log
+
+énumère en ordre chronologique inversé les commits réalisés. Cela signifie que les commits les plus récents apparaissent en premier.
+
+
+______________________________________________________________________________________________________
+
+$git reflog
+
+va loguer les commits, mais aussi toutes les autres actions que vous avez pu faire en local. Git reflog va enregistrer vos commits, vos modifications de messages, vos merges, vos resets.
+
+Ce qui est très pratique, c'est que comme Git log, Git reflog va afficher un identifiant SHA-1 pour chaque action. Il est donc très facile de revenir à une action donnée grâce au `SHA`. Cette commande, c'est votre joker, elle assure votre survie en cas d'erreur.  Pour revenir à une action donnée, on prend les 8 premiers caractères de son `SHA` et on fait :
+
+
+
+$git checkout SHA
+
+exemple:
+
+$git checkout e789e7c
+
+______________________________________________________________________________________________________
+
+
+La commande  `git blame`  permet d’examiner le contenu d’un fichier ligne par ligne et de déterminer la date à laquelle chaque ligne a été modifiée, et le nom de l’auteur des modifications.
+
+$git blame monFichier.php
+
+`git blame`  va afficher pour chaque ligne modifiée, son ID, l'auteur, l'horodatage, le numéro de la ligne et le contenu de la ligne
+
+
+______________________________________________________________________________________________________
+
+
+$git cherry-pick 
+ Cette commande va permettre de sélectionner un ou plusieurs commits grâce à leurs SHA et de les migrer sur la branche master, sans pour autant fusionner toute la branche 
+
+?[Attention, Git cherry-pick n'est pas très apprécié dans la communauté des développeurs]
+
+
+$git cherry-pick SHA
+
+SHA du ou des commit(s)
+
+exemple:
+
+$git cherry-pick d356940 de966d4
+
+
+
+

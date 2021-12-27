@@ -1,0 +1,23 @@
+                                                MENU
+
+Il faut l'extension txt syntax pour bien utiliser mes notes :https://marketplace.visualstudio.com/items?itemName=xshrim.txt-syntax 
+
+initialisation,créations dépots
+couleur dans consoles, 
+branches, commit................................................................................note1
+
+
+Corrigez des erreurs
+dépots locales..................................................................................note2
+
+
+Corrigez des erreurs
+dépots distants.................................................................................note3
+
+
+Les logs,correction
+de commit.......................................................................................note4
+
+
+
+
